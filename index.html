@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Мои расходы</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+    <header class="header">
+        <div>
+            <span class="small-title">ЛИЧНЫЕ ФИНАНСЫ</span>
+            <h1>Мои расходы<span>.</span></h1>
+            <p>Контролируй свои деньги и покупки</p>
+        </div>
+        <div class="header-icon">₸</div>
+    </header>
+
+    <section class="summary">
+        <div class="summary-top">
+            <div>
+                <span class="muted">Всего потрачено</span>
+                <h2 id="totalAmount">0 ₸</h2>
+            </div>
+            <div class="summary-icon">↗</div>
+        </div>
+        <div class="summary-bottom">
+            <span>Количество расходов</span>
+            <strong id="expenseCount">0</strong>
+        </div>
+    </section>
+
+    <section class="tabs-section">
+        <div class="section-heading">
+            <h2>Мои категории</h2>
+            <button id="showTabForm" class="add-tab-button">
+                + Новая вкладка
+            </button>
+        </div>
+
+        <form id="tabForm" class="tab-form hidden">
+            <input
+                type="text"
+                id="tabName"
+                placeholder="Название новой вкладки"
+                maxlength="30"
+                required
+            >
+            <button type="submit">Создать</button>
+        </form>
+
+        <div id="tabs" class="tabs"></div>
+    </section>
+
+    <main class="content-grid">
+
+        <section class="card chart-card">
+            <div class="card-heading">
+                <div>
+                    <h2>Общая статистика</h2>
+                    <p>Распределение расходов</p>
+                </div>
+                <span class="chart-icon">◉</span>
+            </div>
+
+            <div class="chart-container">
+                <div id="donutChart" class="donut-chart">
+                    <div class="donut-center">
+                        <span>ВСЕГО</span>
+                        <strong id="chartTotal">0 ₸</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div id="legend" class="legend">
+                <p class="empty-text">Пока нет расходов</p>
+            </div>
+        </section>
+
+        <section class="card form-card">
+            <div class="card-heading">
+                <div>
+                    <h2>Новый расход</h2>
+                    <p>Добавь свою покупку</p>
+                </div>
+                <span class="form-icon">＋</span>
+            </div>
+
+            <form id="expenseForm">
+
+                <label for="expenseName">Название покупки</label>
+                <input
+                    type="text"
+                    id="expenseName"
+                    placeholder="Например, хлеб"
+                    maxlength="60"
+                    required
+                >
+
+                <label for="expenseAmount">Сумма (₸)</label>
+                <input
+                    type="number"
+                    id="expenseAmount"
+                    placeholder="Например, 500"
+                    min="0.01"
+                    step="0.01"
+                    required
+                >
+
+                <label for="expenseDate">Дата покупки</label>
+                <input type="date" id="expenseDate" required>
+
+                <button type="submit" class="submit-button">
+                    + Добавить расход
+                </button>
+
+            </form>
+        </section>
+
+    </main>
+
+    <section class="card expenses-card">
+        <div class="card-heading">
+            <div>
+                <h2 id="expensesTitle">Все расходы</h2>
+                <p>История твоих покупок</p>
+            </div>
+            <span class="list-icon">☷</span>
+        </div>
+
+        <div id="expensesList" class="expenses-list">
+            <p class="empty-text">Здесь пока ничего нет</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>МОИ РАСХОДЫ © 2026</p>
+        <span>Управляй деньгами разумно</span>
+    </footer>
+
+</div>
+
+<script src="app.js"></script>
+</body>
+</html>
