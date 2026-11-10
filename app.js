@@ -174,7 +174,24 @@ expenseForm.addEventListener("submit", function(event) {
         return;
     }
 
-    // Создаём новый расход
+    
+// Проверяем, есть ли такая покупка в этой вкладке
+const existingExpense = expenses.find(item =>
+    item.tabId === activeTab &&
+    item.name.trim().toLowerCase() === name.toLowerCase()
+);
+
+if (existingExpense) {
+
+    // Если покупка уже существует — прибавляем сумму
+    existingExpense.amount += amount;
+
+    // Обновляем дату последней покупки
+    existingExpense.date = date;
+
+} else {
+
+    // Если покупки ещё нет — создаём новую
     const newExpense = {
         id: Date.now(),
         name: name,
@@ -185,6 +202,8 @@ expenseForm.addEventListener("submit", function(event) {
     };
 
     expenses.push(newExpense);
+}
+
 
     saveData();
 
